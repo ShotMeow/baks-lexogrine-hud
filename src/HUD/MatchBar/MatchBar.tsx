@@ -5,6 +5,7 @@ import { useBombTimer } from "./../Timers/Countdown";
 import { Match } from "./../../API/types";
 import matchbarBgSrc from "../../assets/bg/matchbar-bg.png";
 import baksLogoSrc from "../../assets/icons/baks_logo.png";
+import Bomb from "../Timers/BombTimer.tsx";
 
 function stringToClock(time: string | number, pad = true) {
   if (typeof time === "string") {
@@ -105,6 +106,9 @@ const Matchbar = (props: IProps) => {
             ))}
           </div>
           <span>{left.score}</span>
+          {(bombData.state === "defusing" || bombData.state === "planting") && (
+            <Bomb />
+          )}
         </div>
         <div id="timer">
           <img className="baks-logo" src={baksLogoSrc} alt="Logo" />
@@ -138,6 +142,9 @@ const Matchbar = (props: IProps) => {
             ))}
           </div>
           <span>{right.score}</span>
+          {(bombData.state === "defusing" || bombData.state === "planting") && (
+            <Bomb />
+          )}
         </div>
         <TeamScore team={right} orientation={"right"} timer={rightTimer} />
       </div>

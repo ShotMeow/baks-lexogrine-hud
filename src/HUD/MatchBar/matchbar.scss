@@ -20,7 +20,7 @@
 .winner {
 	position: absolute;
 	width: 300px;
-	top: 110px;
+	top: 80px;
 	height: 100px;
 	display: flex;
 	flex-direction: column;
@@ -356,7 +356,7 @@
 			display: none;
 		}
 	}
-	.team {
+	> .team {
 		width: 360px;
 		display: flex;
 		align-items: center;
@@ -499,7 +499,7 @@
 		height: 49px;
 		background-color: #3c3c3c;
 		position: absolute;
-		width: 0%;
+		width: 0;
 	}
 	.defuse_plant_caption {
 		z-index: 1;

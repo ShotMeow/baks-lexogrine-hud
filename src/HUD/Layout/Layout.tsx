@@ -20,6 +20,9 @@ import { Scout } from "../Scout";
 import CTAvatar from "../../assets/avatars/ct.png";
 import TAvatar from "../../assets/avatars/t.png";
 
+import defusingVideo from "../../assets/videos/defusing.webm";
+import plantingVideo from "../../assets/videos/planting.webm";
+
 interface Props {
   game: CSGO;
   match: Match | null;
@@ -80,6 +83,23 @@ const Layout = ({ game, match }: Props) => {
           </div>
         </div>
       </div>
+      {game.bomb?.state === "planting" ? (
+        <div className="bomb-state">
+          <video autoPlay muted loop>
+            <source src={plantingVideo} type="video/webm" />
+          </video>
+          <div>{game.bomb.player?.name} PLANTING THE BOMB</div>
+        </div>
+      ) : (
+        game.bomb?.state === "defusing" && (
+          <div className="bomb-state">
+            <video autoPlay muted loop>
+              <source src={defusingVideo} type="video/webm" />
+            </video>
+            <div>{game.bomb.player?.name} DEFUSING THE BOMB</div>
+          </div>
+        )
+      )}
       <Killfeed />
       <Overview match={match} map={game.map} players={game.players || []} />
       <RadarMaps match={match} map={game.map} game={game} />

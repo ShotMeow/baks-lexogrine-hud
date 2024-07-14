@@ -1,18 +1,56 @@
-import { MAX_TIMER, useBombTimer } from "./Countdown";
-import { C4 } from "./../../assets/Icons";
+import { useBombTimer } from "./Countdown";
+import { Bomb as BombIcon, Defuse } from "../../assets/Icons.tsx";
+import { useEffect, useState } from "react";
 
 const Bomb = () => {
   const bombData = useBombTimer();
-  const show = bombData.state === "planted" || bombData.state === "defusing";
-  
+  const [plantWidth, setPlantWidth] = useState(0);
+  const [defuseWidth, setDefuseWidth] = useState(0);
+  useEffect(() => {
+    const plantInterval = setInterval(() => {
+      setPlantWidth(plantWidth + 1.2);
+    }, 50);
+    const defuseInterval = setInterval(() => {
+      bombData.player?.state.defusekit
+        ? setDefuseWidth(defuseWidth + 0.8)
+        : setDefuseWidth(defuseWidth + 0.4);
+    }, 50);
+
+    return () => {
+      clearInterval(defuseInterval);
+      clearInterval(plantInterval);
+    };
+  }, [bombData.player?.state.defusekit, defuseWidth, plantWidth]);
   return (
-    <div id={`bomb_container`}>
-      <div className={`bomb_timer ${show ? "show" : "hide"}`} style={{ height: `${bombData.bombTime*100/MAX_TIMER.bomb}%` }}></div>
-      <div className={`bomb_icon ${show ? "show" : "hide"}`}>
-        <C4 fill="white" />
+    <>
+      <div
+        className={`defuse-bar ${bombData.state !== "defusing" ? "hide" : ""}`}
+      >
+        <Defuse />
+        <div className="indicator">
+          <div
+            className="stripe"
+            style={{
+              width: `${defuseWidth}%`,
+            }}
+          />
+        </div>
       </div>
-    </div>
+      <div
+        className={`plant-bar ${bombData.state !== "planting" ? "hide" : ""}`}
+      >
+        <BombIcon />
+        <div className="indicator">
+          <div
+            className="stripe"
+            style={{
+              width: `${plantWidth}%`,
+            }}
+          />
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default Bomb;
