@@ -126,7 +126,7 @@ html, body, .map-container {
 }
 
 .map .player.flashed.CT:not(.dead) .label {
-    background: rgb(159 197 255);
+    background: var(--color-new-ct);
 }
 .map .player.flashed.T:not(.dead) .label {
     background: rgb(255 219 165);
@@ -267,10 +267,10 @@ html, body, .map-container {
     animation: BombDefused 2s 1 forwards;
 }
 .map .player.CT .label {
-    background: rgb(16, 88, 197)
+    background: var(--color-new-ct)
 }
 .map .player.T .label {
-    background: rgb(255, 153, 0);
+    background: var(--color-new-t);
 }
 .map .player.T.hasBomb .label {
     background: red;
