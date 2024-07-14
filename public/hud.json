@@ -1,13 +1,13 @@
 {
-    "name":"LHM CS2 Default HUD",
-    "version":"1.0.3",
-    "author":"Lexogrine",
+    "name":"BakS Cup HUD",
+    "version":"1.0.4",
+    "author":"Kai Goldman",
     "legacy": false,
     "radar": true,
-    "killfeed": false,
+    "killfeed": true,
     "game":"cs2",
     "boltobserv":{
-        "css":false,
-        "maps":false
+        "css":true,
+        "maps":true
     }
 }

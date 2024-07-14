@@ -250,7 +250,7 @@
 		.cup-bg {
 			position: absolute;
 			z-index: 9999;
-			background-color: rgba(0, 0, 0, 0.9);
+			background-color: var(--sub-panel-color);
 			top: -26px;
 			width: 155px;
 			height: 20px;

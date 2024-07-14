@@ -4,6 +4,10 @@ export const keybindDefinition = [
     "action": "toggleCams"
   },
   {
+    "bind": "Tab",
+    "action": "openPlayersList"
+  },
+  {
     "bind": "Alt+V",
     "action": "radarBigger"
   },
