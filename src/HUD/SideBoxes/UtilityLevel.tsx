@@ -48,14 +48,15 @@ function utilityColor(amount: number) {
 
 function sum(grenades: WeaponRaw[], name: string) {
   return (
-    grenades.filter((grenade) => grenade.name === name).reduce(
-      (prev, next) => ({
-        ...next,
-        ammo_reserve: (prev.ammo_reserve || 0) + (next.ammo_reserve || 0),
-      }),
-      { name: "", ammo_reserve: 0 },
-    )
-      .ammo_reserve || 0
+    grenades
+      .filter((grenade) => grenade.name === name)
+      .reduce(
+        (prev, next) => ({
+          ...next,
+          ammo_reserve: (prev.ammo_reserve || 0) + (next.ammo_reserve || 0),
+        }),
+        { name: "", ammo_reserve: 0 },
+      ).ammo_reserve || 0
   );
 }
 
@@ -63,9 +64,9 @@ function parseGrenades(players: Player[], side: Side) {
   const grenades = players
     .filter((player) => player.team.side === side)
     .map((player) =>
-      Object.values(player.weapons).filter((weapon) =>
-        weapon.type === "Grenade"
-      )
+      Object.values(player.weapons).filter(
+        (weapon) => weapon.type === "Grenade",
+      ),
     )
     .flat()
     .map((grenade) => ({
@@ -85,15 +86,19 @@ export function summarise(players: Player[], side: Side) {
   };
 }
 
-const GrenadeContainer = (
-  { grenade, amount }: { grenade: string; amount: number },
-) => {
+const GrenadeContainer = ({
+  grenade,
+  amount,
+}: {
+  grenade: string;
+  amount: number;
+}) => {
   return (
     <div className="grenade_container">
       <div className="grenade_image">
         <Weapon weapon={grenade} active={false} isGrenade />
       </div>
-      <div className="grenade_amount">x{amount}</div>
+      <div className="grenade_amount">{amount}</div>
     </div>
   );
 };

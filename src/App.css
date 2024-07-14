@@ -45,10 +45,10 @@ code {
   --color-gray: rgba(191, 191, 191, 1.0);
   --color-moneys: #a7d32e;
   --dev-purple: rgba(200, 0, 255, 1);
-  --color-t: #c19511;
-  --color-ct: #5788a8;
-  --color-new-t: #f0c941;
-  --color-new-ct: #5ab8f4;
+  --color-t: #d2ab67;
+  --color-ct: #2f7511;
+  --color-new-t: #d2ab67;
+  --color-new-ct: #2f7511;
   --color-bomb: #f22222;
   --color-defuse: #2222f2;
 }

@@ -1,9 +1,11 @@
 import CameraContainer from "../Camera/Container";
 import PlayerCamera from "./../Camera/Camera";
 
-import { Skull } from "./../../assets/Icons";
 import { useConfig } from "../../API/contexts/actions";
 import { apiUrl } from "../../API";
+
+import CTAvatar from "../../assets/avatars/ct.png";
+import TAvatar from "../../assets/avatars/t.png";
 
 interface IProps {
   steamid: string;
@@ -14,36 +16,57 @@ interface IProps {
   showSkull?: boolean;
   showCam?: boolean;
   sidePlayer?: boolean;
-  teamId?: string | null
+  teamId?: string | null;
+  side: "T" | "CT";
 }
-const Avatar = (
-  { steamid, url, height, width, showCam, showSkull, sidePlayer, teamId }: IProps,
-) => {
+const Avatar = ({
+  steamid,
+  url,
+  height,
+  width,
+  showCam,
+  sidePlayer,
+  teamId,
+  side,
+}: IProps) => {
   const data = useConfig("display_settings");
 
-  const avatarUrl = teamId && (data?.replace_avatars === "always" || (data?.replace_avatars === "if_missing" && !url)) ? `${apiUrl}api/teams/logo/${teamId}` : url;
-  if(!avatarUrl && !showCam) return null;
+  const avatarUrl =
+    teamId &&
+    (data?.replace_avatars === "always" ||
+      (data?.replace_avatars === "if_missing" && !url))
+      ? `${apiUrl}api/teams/logo/${teamId}`
+      : url;
   return (
-    <div className={`avatar`}>
-      {showCam
-        ? (sidePlayer
-          ? (
-            <div className="videofeed">
-              <PlayerCamera steamid={steamid} visible={true} />
-            </div>
-          )
-          : <CameraContainer observedSteamid={steamid} />)
-        : null}
-      {showSkull
-        ? <Skull height={height} width={width} />
-        : (
-          avatarUrl ? <img
-            src={avatarUrl}
-            height={height}
-            width={width}
-            alt={"Avatar"}
-          /> : null
-        )}
+    <div className="avatar">
+      {showCam ? (
+        sidePlayer ? (
+          <div className="videofeed">
+            <PlayerCamera steamid={steamid} visible={true} />
+          </div>
+        ) : (
+          <CameraContainer observedSteamid={steamid} />
+        )
+      ) : null}
+      {avatarUrl ? (
+        <img src={avatarUrl} height={height} width={width} alt={"Avatar"} />
+      ) : side === "CT" ? (
+        <img
+          className="no-avatar"
+          src={CTAvatar}
+          height={height}
+          width={width}
+          alt={"Avatar"}
+        />
+      ) : (
+        <img
+          className="no-avatar"
+          src={TAvatar}
+          height={height}
+          width={width}
+          alt={"Avatar"}
+        />
+      )}
     </div>
   );
 };
