@@ -1,4 +1,5 @@
 import * as I from "csgogsi";
+import { Player } from "csgogsi";
 import "./matchbar.scss";
 import TeamScore from "./TeamScore";
 import { useBombTimer } from "./../Timers/Countdown";
@@ -25,6 +26,7 @@ interface IProps {
   map: I.Map;
   phase: I.CSGO["phase_countdowns"];
   bomb: I.Bomb | null;
+  mvpPlayer: Player | undefined;
 }
 
 export interface Timer {
@@ -125,7 +127,7 @@ const Matchbar = (props: IProps) => {
           </div>
           <div
             id="round_now"
-            className={`${phase.phase === "freezetime" ? "hide" : ""}`}
+            className={`${phase.phase === "freezetime" && !props.mvpPlayer ? "hide" : ""}`}
           >
             {getRoundLabel(map.round)}
           </div>

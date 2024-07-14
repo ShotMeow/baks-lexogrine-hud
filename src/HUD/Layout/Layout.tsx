@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TeamBox from "./../Players/TeamBox";
 import MatchBar from "../MatchBar/MatchBar";
 import Observed from "./../Players/Observed";
@@ -13,7 +13,7 @@ import Overview from "../Overview/Overview";
 import Tournament from "../Tournament/Tournament";
 import Pause from "../PauseTimeout/Pause";
 import Timeout from "../PauseTimeout/Timeout";
-import { CSGO } from "csgogsi";
+import { CSGO, Player, RoundInfo } from "csgogsi";
 import { Match } from "../../API/types";
 import { useAction } from "../../API/contexts/actions";
 import { Scout } from "../Scout";
@@ -22,6 +22,26 @@ import TAvatar from "../../assets/avatars/t.png";
 
 import defusingVideo from "../../assets/videos/defusing.webm";
 import plantingVideo from "../../assets/videos/planting.webm";
+import { Bomb, DeathIcon, Defuse } from "../../assets/Icons.tsx";
+
+const getRound = (round: number | undefined) => {
+  switch (round) {
+    case 5:
+      return round;
+    case 10:
+      return round;
+    case 15:
+      return round;
+    case 20:
+      return round;
+    case 25:
+      return round;
+    case 30:
+      return round;
+    default:
+      return;
+  }
+};
 
 interface Props {
   game: CSGO;
@@ -69,6 +89,31 @@ const Layout = ({ game, match }: Props) => {
     setPlayersListShown(!playersListShown);
   });
 
+  const roundsArr: Partial<RoundInfo>[] = [];
+  game.map.rounds.forEach((round) => roundsArr.push(round));
+
+  for (let i = roundsArr.length + 1; i < 31; i++) {
+    roundsArr.push({
+      round: i,
+    });
+  }
+
+  const [mvpPlayer, setMvpPlayer] = useState<Player>();
+
+  useEffect(() => {
+    if (!mvpPlayer) {
+      const mvpPlayer = game.players.find(
+        (player) => player.state.round_kills >= 3,
+      );
+
+      if (mvpPlayer) {
+        setMvpPlayer(mvpPlayer);
+      } else {
+        setMvpPlayer(undefined);
+      }
+    }
+  }, [game.players, mvpPlayer]);
+
   return (
     <div className="layout">
       <div className={`players_alive`}>
@@ -108,6 +153,7 @@ const Layout = ({ game, match }: Props) => {
         phase={game.phase_countdowns}
         bomb={game.bomb}
         match={match}
+        mvpPlayer={mvpPlayer}
       />
       <Pause phase={game.phase_countdowns} />
       <Timeout map={game.map} phase={game.phase_countdowns} />
@@ -184,6 +230,34 @@ const Layout = ({ game, match }: Props) => {
           </div>
         </div>
       )}
+      <div
+        className={`rounds-result ${!isFreezetime || mvpPlayer ? "hide" : ""}`}
+      >
+        {roundsArr.map((round) => (
+          <div key={round.round} className="round">
+            {round.outcome && (
+              <div className="icon">
+                {round.outcome === "ct_win_elimination" ||
+                round.outcome === "t_win_elimination" ? (
+                  <DeathIcon />
+                ) : round.outcome === "ct_win_defuse" ? (
+                  <Defuse />
+                ) : (
+                  <Bomb />
+                )}
+              </div>
+            )}
+            <div
+              className={`block ${
+                round.side === "CT" ? "CT" : round.side === "T" ? "T" : ""
+              }`}
+            >
+              <div className="block-top" />
+              <span>{getRound(round.round)}</span>
+            </div>
+          </div>
+        ))}
+      </div>
       <Tournament />
 
       <Observed player={game.player} />
@@ -200,6 +274,51 @@ const Layout = ({ game, match }: Props) => {
         side="right"
         current={game.player}
       />
+
+      <div
+        className={`mvp-player ${mvpPlayer?.team.side === "CT" ? "CT" : "T"} ${isFreezetime && mvpPlayer ? "show" : "hidden"}`}
+      >
+        <img
+          className="mvp-team"
+          src={mvpPlayer?.team.logo || ""}
+          alt="Team Logo"
+        />
+        <img
+          className="mvp-avatar"
+          src={
+            mvpPlayer?.avatar
+              ? mvpPlayer.avatar
+              : mvpPlayer?.team.side === "CT"
+                ? CTAvatar
+                : TAvatar
+          }
+          alt="Avatar"
+        />
+        <div className="mvp-name">{mvpPlayer?.name}</div>
+        <div className="mvp-info">
+          <div className="mvp-stats-title">
+            Статистика в {game.map.round} раунде
+          </div>
+          <div className="mvp-stats">
+            <div>
+              <div>Damage</div>
+              <span>{mvpPlayer?.state.round_totaldmg}</span>
+            </div>
+            <div>
+              <div>Kills</div>
+              <span>{mvpPlayer?.state.round_kills}</span>
+            </div>
+            <div>
+              <div>ADR</div>
+              <span>{mvpPlayer?.state.adr}</span>
+            </div>
+            <div>
+              <div>%HS</div>
+              <span>{mvpPlayer?.state.round_killhs}</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <Trivia />
       <Scout left={left.side} right={right.side} />

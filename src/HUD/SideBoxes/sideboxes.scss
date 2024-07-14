@@ -75,14 +75,12 @@
 	width: 415px;
 	height: 70px;
 	display: flex;
-	flex-direction: row;
 	opacity: 1;
 	transition: all 0.75s;
 	background-color: var(--sub-panel-color);
 	margin-bottom: 4px;
 	margin-top: 4px;
 	flex-direction: column;
-	margin-bottom: 4px;
 	border-radius: 20px 20px 0 0;
 	.title_container {
 		display: flex;
@@ -128,10 +126,9 @@
 	opacity: 1;
 	transition: all 0.75s;
 	background-color: var(--sub-panel-color);
-	margin-bottom: 4px;
 	margin-top: 4px;
 	font-weight: 600;
-	margin-bottom: 0px;
+	margin-bottom: 0;
 	.money_container {
 		display: flex;
 		flex-direction: column;
@@ -216,6 +213,70 @@
 	.money_container {
 		.title {
 			color: var(--color-new-t);
+		}
+	}
+}
+
+.rounds-result {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 960px;
+	padding: 10px 20px;
+	top: 115px;
+	position: absolute;
+	gap: 5px;
+	background-color: var(--sub-panel-color);
+	color: white;
+	fill: white;
+	left: 50%;
+	transform: translateX(-50%);
+	svg {
+		width: 15px;
+		height: 15px;
+	}
+	&.hide {
+		display: none;
+	}
+
+	.round {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		gap: 2px;
+
+		.block {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 900;
+			font-size: 14px;
+			width: 28px;
+			height: 28px;
+			.block-top {
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 4px;
+				position: absolute;
+				background-color: #666666;
+			}
+			span {
+				padding-top: 4px;
+			}
+			&.CT {
+				background: linear-gradient(180deg, var(--color-new-ct) 0%, rgba(255, 255, 255, 0) 90%);
+				.block-top {
+					background-color: var(--color-new-ct);
+				}
+			}
+			&.T {
+				background: linear-gradient(180deg, rgba(210, 171, 103, 0.6) 0%, rgba(255, 255, 255, 0) 90%);
+				.block-top {
+					background-color: var(--color-new-t);
+				}
+			}
 		}
 	}
 }
