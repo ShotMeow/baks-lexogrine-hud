@@ -6,6 +6,7 @@ import { apiUrl } from "../../API";
 
 import CTAvatar from "../../assets/avatars/ct.png";
 import TAvatar from "../../assets/avatars/t.png";
+import bg from "../../assets/bg.png";
 
 interface IProps {
   steamid: string;
@@ -48,8 +49,8 @@ const Avatar = ({
           <CameraContainer observedSteamid={steamid} />
         )
       ) : null}
-      {avatarUrl ? (
-        <img src={avatarUrl} height={height} width={width} alt={"Avatar"} />
+      {!avatarUrl ? (
+        <img className="no-avatar" src={bg} height={height} width={width} alt={"Avatar"} />
       ) : side === "CT" ? (
         <img
           className="no-avatar"

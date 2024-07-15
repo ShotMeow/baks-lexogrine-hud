@@ -29,7 +29,6 @@ const Observed = ({ player }: { player: Player | null }) => {
 
   if (!player) return null;
 
-  const country = player.country || player.team.country;
   const currentWeapon = player.weapons.filter(
     (weapon) => weapon.state === "active",
   )[0];
@@ -40,7 +39,8 @@ const Observed = ({ player }: { player: Player | null }) => {
       <div className="avatar-container">
         <Avatar
           steamid={player.steamid}
-          url={null}
+          teamId={player.team.id}
+          url={player.avatar}
           side={player.team.side}
           height={140}
           width={140}
