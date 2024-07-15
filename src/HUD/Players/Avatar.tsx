@@ -49,7 +49,7 @@ const Avatar = ({
           <CameraContainer observedSteamid={steamid} />
         )
       ) : null}
-      {!avatarUrl ? (
+      {avatarUrl ? (
         <img className="no-avatar" src={bg} height={height} width={width} alt={"Avatar"} />
       ) : side === "CT" ? (
         <img
