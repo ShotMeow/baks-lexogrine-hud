@@ -8,12 +8,12 @@ const Bomb = () => {
   const [defuseWidth, setDefuseWidth] = useState(0);
   useEffect(() => {
     const plantInterval = setInterval(() => {
-      setPlantWidth(plantWidth + 1.2);
+      setPlantWidth(plantWidth + 1.7);
     }, 50);
     const defuseInterval = setInterval(() => {
       bombData.player?.state.defusekit
-        ? setDefuseWidth(defuseWidth + 0.8)
-        : setDefuseWidth(defuseWidth + 0.4);
+        ? setDefuseWidth(defuseWidth + 1.06)
+        : setDefuseWidth(defuseWidth + 0.52);
     }, 50);
 
     return () => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TeamBox from "./../Players/TeamBox";
 import MatchBar from "../MatchBar/MatchBar";
 import Observed from "./../Players/Observed";
@@ -23,6 +23,7 @@ import TAvatar from "../../assets/avatars/t.png";
 import defusingVideo from "../../assets/videos/defusing.webm";
 import plantingVideo from "../../assets/videos/planting.webm";
 import { Bomb, DeathIcon, Defuse } from "../../assets/Icons.tsx";
+import { GSI } from "../../API/HUD";
 
 const getRound = (round: number | undefined) => {
   switch (round) {
@@ -100,19 +101,17 @@ const Layout = ({ game, match }: Props) => {
 
   const [mvpPlayer, setMvpPlayer] = useState<Player>();
 
-  useEffect(() => {
-    if (!mvpPlayer) {
-      const mvpPlayer = game.players.find(
-        (player) => player.state.round_kills >= 3,
-      );
+  GSI.on("roundEnd", () => {
+    const newMvpPlayer = game.players.find(
+      (player) => player.state.round_kills >= 3,
+    );
 
-      if (mvpPlayer) {
-        setMvpPlayer(mvpPlayer);
-      } else {
-        setMvpPlayer(undefined);
-      }
+    if (newMvpPlayer) {
+      setMvpPlayer(newMvpPlayer);
+    } else {
+      setMvpPlayer(undefined);
     }
-  }, [game.players, mvpPlayer]);
+  });
 
   return (
     <div className="layout">
@@ -238,7 +237,8 @@ const Layout = ({ game, match }: Props) => {
             {round.outcome && (
               <div className="icon">
                 {round.outcome === "ct_win_elimination" ||
-                round.outcome === "t_win_elimination" ? (
+                round.outcome === "t_win_elimination" ||
+                round.outcome === "ct_win_time" ? (
                   <DeathIcon />
                 ) : round.outcome === "ct_win_defuse" ? (
                   <Defuse />

@@ -1,5 +1,4 @@
 import * as I from "csgogsi";
-import { Timer } from "./MatchBar";
 import TeamLogo from "./TeamLogo";
 import { onGSI } from "../../API/contexts/actions";
 import WinAnnouncement from "./WinIndicator";
@@ -7,7 +6,6 @@ import { useState } from "react";
 
 interface IProps {
   orientation: "left" | "right";
-  timer: Timer | null;
   team: I.Team;
 }
 

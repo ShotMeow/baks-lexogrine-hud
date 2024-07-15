@@ -56,38 +56,6 @@ const Matchbar = (props: IProps) => {
     bomb && (bomb.state === "defusing" || bomb.state === "planted");
 
   const bombData = useBombTimer();
-  const plantTimer: Timer | null =
-    bombData.state === "planting"
-      ? {
-          time: bombData.plantTime,
-          active: true,
-          side: bombData.player?.team.orientation || "right",
-          player: bombData.player,
-          type: "planting",
-        }
-      : null;
-  const defuseTimer: Timer | null =
-    bombData.state === "defusing"
-      ? {
-          time: bombData.defuseTime,
-          active: true,
-          side: bombData.player?.team.orientation || "left",
-          player: bombData.player,
-          type: "defusing",
-        }
-      : null;
-
-  let leftTimer = null;
-  let rightTimer = null;
-  if (defuseTimer?.active || plantTimer?.active) {
-    if (defuseTimer?.active) {
-      if (defuseTimer.side === "left") leftTimer = defuseTimer;
-      else rightTimer = defuseTimer;
-    } else {
-      if (plantTimer?.side === "left") leftTimer = plantTimer;
-      else rightTimer = plantTimer;
-    }
-  }
 
   const amountOfMaps =
     (match && Math.floor(Number(match.matchType.substr(-1)) / 2) + 1) || 0;
@@ -95,7 +63,7 @@ const Matchbar = (props: IProps) => {
   return (
     <>
       <div id={`matchbar`}>
-        <TeamScore team={left} orientation={"left"} timer={leftTimer} />
+        <TeamScore team={left} orientation={"left"} />
         <div className={`score left ${left.side}`}>
           <div className={`wins_box_container left rounds-${amountOfMaps}`}>
             {new Array(amountOfMaps).fill(0).map((_, i) => (
@@ -148,7 +116,7 @@ const Matchbar = (props: IProps) => {
             <Bomb />
           )}
         </div>
-        <TeamScore team={right} orientation={"right"} timer={rightTimer} />
+        <TeamScore team={right} orientation={"right"} />
       </div>
     </>
   );
