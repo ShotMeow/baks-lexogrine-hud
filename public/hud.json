@@ -4,7 +4,7 @@
     "author":"Kai Goldman",
     "legacy": false,
     "radar": true,
-    "killfeed": true,
+    "killfeed": false,
     "game":"cs2",
     "boltobserv":{
         "css":true,
