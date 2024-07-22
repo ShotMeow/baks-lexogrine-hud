@@ -43,14 +43,15 @@
         }
     }
 
+    .no-avatar {
+        position: relative;
+        height: 90px;
+        width: 90px;
+        object-fit: cover;
+    }
+
     &.left {
         left: 20px;
-
-        .no-avatar {
-            position: relative;
-            height: 90px;
-            width: 90px;
-        }
 
         &.CT {
             .player.active {
@@ -105,13 +106,6 @@
 
     &.right {
         right: 20px;
-
-        .no-avatar {
-            position: relative;
-            transform: scale(-1, 1);
-            height: 90px;
-            width: 90px;
-        }
 
         &.CT {
             .avatar {

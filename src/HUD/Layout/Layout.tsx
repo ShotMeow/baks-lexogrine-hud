@@ -114,8 +114,8 @@ const Layout = ({ game, match }: Props) => {
   });
 
   return (
-    <div className="layout">
-      <div className={`players_alive`}>
+    <div className={`layout ${game.map.phase === 'gameover' ? 'hide' : ''}`}>
+      <div className={`players_alive ${isFreezetime ? 'hide' : 'hide'}`}>
         <div className="title_container">Players alive</div>
         <div className="counter_container">
           <div className={`team_counter ${left.side}`}>
