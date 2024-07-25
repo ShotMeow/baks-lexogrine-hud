@@ -1,282 +1,252 @@
 .boxes {
-	position: fixed;
-	bottom: 524px;
+  position: fixed;
+  bottom: 524px;
 }
+
 .boxes.left {
-	left: 20px;
+  left: 20px;
 }
+
 .boxes.right {
-	right: 20px;
+  right: 20px;
 }
+
 .boxes.hide {
-	.utilitybox {
-		height: 0;
-		opacity: 0;
-	}
-	.moneybox {
-		height: 0;
-		opacity: 0;
-	}
-	.sidebox {
-		height: 0;
-		opacity: 0;
-	}
+  .utilitybox {
+    height: 0;
+    opacity: 0;
+  }
+
+  .moneybox {
+    height: 0;
+    opacity: 0;
+  }
+
+  .sidebox {
+    height: 0;
+    opacity: 0;
+  }
 }
+
 .utilitybox.hide {
-	height: 0;
-	opacity: 0;
+  height: 0;
+  opacity: 0;
 }
+
 .moneybox.hide {
-	height: 0;
-	opacity: 0;
+  height: 0;
+  opacity: 0;
 }
+
 .sidebox.hide {
-	height: 0;
-	opacity: 0;
+  height: 0;
+  opacity: 0;
 }
+
 .sidebox {
-	width: 415px;
-	height: 70px;
-	display: flex;
-	flex-direction: row;
-	opacity: 1;
-	transition: all 0.75s;
-	background-color: var(--sub-panel-color);
-	margin-bottom: 4px;
-	margin-top: 4px;
-	align-items: center;
-	.title_container {
-		color: var(--white-full);
-		height: 60px;
-		width: 100%;
-		font-size: 20px;
-		display: flex;
-		flex-direction: column;
-		>div {
-			flex: 1;
-			display: flex;
-			align-items: center;
-			font-weight: 600;
-			font-size: 18px;
-		}
-	}
-	.image_container {
-		width: 70px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		img {
-			max-width: 70px;
-			max-height: 70px;
-		}
-	}
+  width: 415px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  opacity: 1;
+  transition: all 0.75s;
+  background-color: var(--sub-panel-color);
+  margin-bottom: 4px;
+  margin-top: 4px;
+  align-items: center;
+
+  .title_container {
+    color: var(--white-full);
+    height: 60px;
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+
+  .image_container {
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 70px;
+      max-height: 70px;
+    }
+  }
 }
+
 .utilitybox {
-	width: 415px;
-	height: 70px;
-	display: flex;
-	opacity: 1;
-	transition: all 0.75s;
-	background-color: var(--sub-panel-color);
-	margin-bottom: 4px;
-	margin-top: 4px;
-	flex-direction: column;
-	border-radius: 20px 20px 0 0;
-	.title_container {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		font-weight: 600;
-		font-size: 16px;
-		height: 24px;
-	}
-	.title {
-		height: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.grenades_container {
-		display: flex ;
-		
-		flex: 1;
-		height: 46px;
-		.grenade_container {
-			display: flex;
-			flex: 1;
-			color: white;
-			align-items: center;
-			font-weight: 600;
-			font-size: 18px;
-			justify-content: center;
-			
-			svg {
-				height: 30px;
-				width:auto;				
-			}
-		}
-	}
+  width: 415px;
+  height: 70px;
+  display: flex;
+  opacity: 1;
+  transition: all 0.75s;
+  background-color: var(--sub-panel-color);
+  clip-path: polygon(3% 0%, 97% 0%, 100% 15%, 100% 100%, 0 100%, 0 15%);
+  margin-bottom: 4px;
+  margin-top: 4px;
+  flex-direction: column;
+
+  .title_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    height: 24px;
+  }
+
+  .title {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .grenades_container {
+    display: flex;
+
+    flex: 1;
+    height: 46px;
+
+    .grenade_container {
+      display: flex;
+      flex: 1;
+      color: white;
+      align-items: center;
+      font-weight: 600;
+      font-size: 18px;
+      justify-content: center;
+
+      svg {
+        height: 30px;
+        width: auto;
+      }
+    }
+  }
 }
+
 .moneybox {
-	width: 415px;
-	height: 70px;
-	display: flex;
-	flex-direction: row;
-	opacity: 1;
-	transition: all 0.75s;
-	background-color: var(--sub-panel-color);
-	margin-top: 4px;
-	font-weight: 600;
-	margin-bottom: 0;
-	.money_container {
-		display: flex;
-		flex-direction: column;
-		flex: 1;
-		color: white;
-		.title {
-			height: 25px;
-			display: flex;
-			align-items: flex-end;
-			font-size: 16px;
-			justify-content: center;
-		}
-		.value {
-			flex: 1;
-			display: flex;
-			align-items: center;
-			font-size: 18px;
-			justify-content: center;
-		}
-	}
-	.loss_container {
-		width: 4px;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: center;
-		.loss-box {
-			height: 13px;
-			width: 100%;
-			background-color: #515254;
-			margin-top: 1px;
-			margin-bottom: 1px;
-		}
-		.loss-box.active.CT {
-			background-color: var(--color-new-ct);
-		}
-		.loss-box.active.T {
-			background-color: var(--color-new-t);
-		}
-	}
+  width: 415px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  opacity: 1;
+  transition: all 0.75s;
+  background-color: var(--sub-panel-color);
+  margin-top: 4px;
+  font-weight: 600;
+  margin-bottom: 0;
+
+  .money_container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: white;
+
+    .title {
+      height: 25px;
+      display: flex;
+      align-items: flex-end;
+      font-size: 16px;
+      justify-content: center;
+    }
+
+    .value {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      justify-content: center;
+    }
+  }
+
+  .loss_container {
+    width: 4px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    .loss-box {
+      height: 13px;
+      width: 100%;
+      background-color: #515254;
+      margin-top: 1px;
+      margin-bottom: 1px;
+    }
+
+    .loss-box.active.CT {
+      background-color: rgb(var(--color-new-ct));
+    }
+
+    .loss-box.active.T {
+      background-color: rgb(var(--color-new-t));
+    }
+  }
 }
+
 .sidebox.right {
-	flex-direction: row-reverse;
-	.title_container {
-		>div {
-			flex-direction: row-reverse;
-			text-align: right;
-			padding-right: 10px;
-		}
-	}
+  flex-direction: row-reverse;
+
+  .title_container {
+    > div {
+      flex-direction: row-reverse;
+      text-align: right;
+      padding-right: 10px;
+    }
+  }
 }
+
 .sidebox.left {
-	.title_container {
-		>div {
-			flex-direction: row;
-			text-align: left;
-			padding-left: 10px;
-		}
-	}
+  .title_container {
+    > div {
+      flex-direction: row;
+      text-align: left;
+      padding-left: 10px;
+    }
+  }
 }
+
 .utilitybox.CT {
-	.title {
-		color: var(--color-new-ct);
-	}
+  .title {
+    color: rgb(var(--color-new-ct));
+  }
 }
+
 .utilitybox.T {
-	.title {
-		color: var(--color-new-t);
-	}
+  .title {
+    color: rgb(var(--color-new-t));
+  }
 }
+
 .moneybox.right {
-	flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
+
 .moneybox.CT {
-	.money_container {
-		.title {
-			color: var(--color-new-ct);
-		}
-	}
+  .money_container {
+    .title {
+      color: rgb(var(--color-new-ct));
+    }
+  }
 }
+
 .moneybox.T {
-	.money_container {
-		.title {
-			color: var(--color-new-t);
-		}
-	}
-}
-
-.rounds-result {
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	width: 960px;
-	padding: 10px 20px;
-	top: 115px;
-	position: absolute;
-	gap: 5px;
-	background-color: var(--sub-panel-color);
-	color: white;
-	fill: white;
-	left: 50%;
-	transform: translateX(-50%);
-	svg {
-		width: 15px;
-		height: 15px;
-	}
-	&.hide {
-		display: none;
-	}
-
-	.round {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		gap: 2px;
-
-		.block {
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-weight: 900;
-			font-size: 14px;
-			width: 28px;
-			height: 28px;
-			.block-top {
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 4px;
-				position: absolute;
-				background-color: #666666;
-			}
-			span {
-				padding-top: 4px;
-			}
-			&.CT {
-				background: linear-gradient(180deg, var(--color-new-ct) 0%, rgba(255, 255, 255, 0) 90%);
-				.block-top {
-					background-color: var(--color-new-ct);
-				}
-			}
-			&.T {
-				background: linear-gradient(180deg, rgba(210, 171, 103, 0.6) 0%, rgba(255, 255, 255, 0) 90%);
-				.block-top {
-					background-color: var(--color-new-t);
-				}
-			}
-		}
-	}
+  .money_container {
+    .title {
+      color: rgb(var(--color-new-t));
+    }
+  }
 }

@@ -5,59 +5,57 @@
 html,
 body,
 #root {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: 'Circe', 'Montserrat', 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /*background-image: url('./assets/bg.png');/**/
+    margin: 0;
+    font-family: 'Circe', 'Montserrat', 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*background-image: url('./assets/bg.png');/**/
 }
 
 @font-face {
-  font-family: 'Louis George Cafe';
-  src: local('Louis George Cafe'), url('./fonts/Louis George Cafe.ttf') format('truetype');
+    font-family: 'Louis George Cafe';
+    src: local('Louis George Cafe'), url('./fonts/Louis George Cafe.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Rounded_Elegance';
-  src: local('Rounded_Elegance'), url('./fonts/Rounded_Elegance.ttf') format('truetype');
+    font-family: 'Rounded_Elegance';
+    src: local('Rounded_Elegance'), url('./fonts/Rounded_Elegance.ttf') format('truetype');
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .layout {
-  width: 100%;
-  height: 100%;
-  perspective: 500px;
-  transition: all 1s ease;
+    width: 100%;
+    height: 100%;
+    perspective: 500px;
+    transition: all 1s ease;
 }
 
 .layout.hide {
-  opacity: 0;
+    opacity: 0;
 }
 
 :root {
-  --main-panel-color: rgba(12, 15, 18, 0.85);
-  --sub-panel-color: rgba(0, 0, 0, 0.83);
-  --white-dull: rgba(10, 5, 5, 0.25);
-  --white-full: rgba(250, 250, 250, 1);
-  --white-half: rgba(250, 250, 250, 0.5);
-  --color-gray: rgba(191, 191, 191, 1.0);
-  --color-moneys: #a7d32e;
-  --dev-purple: rgba(200, 0, 255, 1);
-  --color-t: #d2ab67;
-  --color-ct: #2f7511;
-  --color-new-t: #d2ab67;
-  --color-new-ct: #2f7511;
-  --color-bomb: #f22222;
-  --color-defuse: #2222f2;
+    --main-panel-color: rgba(12, 15, 18, 0.85);
+    --sub-panel-color: rgba(0, 0, 0, 0.83);
+    --white-dull: rgba(10, 5, 5, 0.25);
+    --white-full: rgba(250, 250, 250, 1);
+    --white-half: rgba(250, 250, 250, 0.5);
+    --color-gray: rgba(191, 191, 191, 1.0);
+    --color-moneys: #a7d32e;
+    --dev-purple: rgba(200, 0, 255, 1);
+    --color-new-t: 211, 171, 103;
+    --color-new-ct: 47, 117, 14;
+    --color-bomb: #f22222;
+    --color-defuse: #2222f2;
 }
 
 
