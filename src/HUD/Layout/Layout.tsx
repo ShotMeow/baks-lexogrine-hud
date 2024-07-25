@@ -20,6 +20,8 @@ import PlantDefuse from "../Timers/PlantDefuse.tsx";
 import PlayersList from "../PlayersList/PlayersList.tsx";
 import RoundsResult from "../RoundsResult/RoundsResult.tsx";
 import MvpPlayer from "../MvpPlayer/MvpPlayer.tsx";
+import Pause from "../PauseTimeout/Pause.tsx";
+import Timeout from "../PauseTimeout/Timeout.tsx";
 
 interface Props {
     game: CSGO;
@@ -87,7 +89,7 @@ const Layout = ({game, match}: Props) => {
                 mvpPlayer={mvpPlayer}
             />
             <PlayersList leftPlayers={leftPlayers} rightPlayers={rightPlayers} left={left} right={right}/>
-            <RoundsResult game={game} isShown={isFreezetime && !mvpPlayer}/>
+            <RoundsResult game={game} isShown={isFreezetime && !mvpPlayer && game.map.round !== 0}/>
             <Tournament/>
 
             <Observed player={game.player}/>
@@ -104,8 +106,11 @@ const Layout = ({game, match}: Props) => {
                 side="right"
                 current={game.player}
             />
-            <MvpPlayer mvpPlayer={mvpPlayer} isShown={Boolean(isFreezetime && mvpPlayer)} game={game}/>
-
+            <MvpPlayer mvpPlayer={mvpPlayer}
+                       isShown={Boolean(isFreezetime && mvpPlayer && game.phase_countdowns.phase !== 'paused' && game.phase_countdowns.phase !== "timeout_ct" && game.phase_countdowns.phase !== "timeout_t")}
+                       game={game}/>
+            <Pause phase={game.phase_countdowns}/>
+            <Timeout phase={game.phase_countdowns} map={game.map}/>
             <Trivia/>
             <Scout left={left.side} right={right.side}/>
             <div className={"boxes left"}>

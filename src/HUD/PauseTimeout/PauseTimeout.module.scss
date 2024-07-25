@@ -1,0 +1,62 @@
+.timeout {
+  text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 150px;
+  background-color: var(--sub-panel-color);
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  font-size: 35px;
+  font-weight: bold;
+  transition: opacity 1.5s;
+  color: white;
+  opacity: 0;
+  clip-path: polygon(2% 0%, 98% 0%, 100% 15%, 100% 85%, 98% 100%, 2% 100%, 0% 85%, 0% 15%);
+}
+
+.pause {
+  text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 150px;
+  background-color: var(--sub-panel-color);
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  font-size: 35px;
+  font-weight: bold;
+  transition: opacity 1.5s;
+  opacity: 0;
+  color: white;
+  clip-path: polygon(2% 0%, 98% 0%, 100% 15%, 100% 85%, 98% 100%, 2% 100%, 0% 85%, 0% 15%);
+}
+
+.team {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10%);
+  width: 200px;
+  object-fit: contain;
+  height: 240px;
+  opacity: .05;
+}
+
+.timeout.show, .pause.show {
+  opacity: 1;
+}
+
+.timeout.t {
+  color: rgb(var(--color-new-t));
+}
+
+.timeout.ct {
+  color: rgb(var(--color-new-ct));
+}
