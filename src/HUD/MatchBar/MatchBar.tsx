@@ -95,7 +95,7 @@ const Matchbar = (props: IProps) => {
                     </div>
                     <div
                         id="round_now"
-                        className={`${phase.phase === "freezetime" && !props.mvpPlayer ? "hide" : ""}`}
+                        className={`${(phase.phase === "freezetime" && !props.mvpPlayer) || (phase.phase === "paused" && !props.mvpPlayer) || (phase.phase === "timeout_ct" && !props.mvpPlayer) || (phase.phase === "timeout_t" && !props.mvpPlayer)? "hide" : ""}`}
                     >
                         {getRoundLabel(map.round)}
                     </div>

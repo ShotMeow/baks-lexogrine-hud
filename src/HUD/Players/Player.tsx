@@ -96,7 +96,7 @@ const Player = ({player, isObserved}: IProps) => {
         ...weapon,
         name: weapon.name.replace("weapon_", ""),
     }));
-    console.log(player);
+
     const primary =
         weapons.filter(
             (weapon) =>

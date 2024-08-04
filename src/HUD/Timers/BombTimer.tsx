@@ -21,6 +21,10 @@ const Bomb = () => {
             clearInterval(plantInterval);
         };
     }, [bombData.player?.state.defusekit, defuseWidth, plantWidth]);
+
+    useEffect(() => {
+        console.log(bombData.plantTime, bombData.defuseTime);
+    }, [bombData.defuseTime, bombData.plantTime]);
     return (
         <>
             <div
