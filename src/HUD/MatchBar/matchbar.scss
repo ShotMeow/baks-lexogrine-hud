@@ -97,6 +97,10 @@
   transform: translateX(-50%);
   color: white;
 
+  .stripe {
+    transition: all 0.1s linear;
+  }
+
   svg {
     color: white;
   }

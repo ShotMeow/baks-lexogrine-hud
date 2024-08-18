@@ -90,10 +90,10 @@ const Observed = ({ player }: { player: Player | null }) => {
               <HealthFull />
               <span>{player?.state.health}</span>
             </div>
-            <div className="armor">
-              {player?.state.helmet ? <ArmorHelmet /> : <ArmorHalf />}
+            {player?.state.armor && <div className="armor">
+              {player?.state.helmet ? <ArmorHelmet/> : <ArmorHalf/>}
               <span>{player?.state.armor}</span>
-            </div>
+            </div>}
           </div>
           <div className="statistics">
             <Statistic label={"K"} value={stats.kills} />

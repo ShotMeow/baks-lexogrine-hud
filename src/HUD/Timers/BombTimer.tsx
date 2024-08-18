@@ -6,25 +6,33 @@ const Bomb = () => {
     const bombData = useBombTimer();
     const [plantWidth, setPlantWidth] = useState(0);
     const [defuseWidth, setDefuseWidth] = useState(0);
+
     useEffect(() => {
-        const plantInterval = setInterval(() => {
-            setPlantWidth(plantWidth + 1.8);
-        }, 50);
-        const defuseInterval = setInterval(() => {
-            bombData.player?.state.defusekit
-                ? setDefuseWidth(defuseWidth + 1.3)
-                : setDefuseWidth(defuseWidth + 0.536);
-        }, 50);
+        let plantInterval: NodeJS.Timeout, defuseInterval: NodeJS.Timeout;
+
+        if (bombData.state === "planting" && plantWidth < 100) {
+            plantInterval = setInterval(() => {
+                setPlantWidth((prev) => {
+                    const newWidth = prev + 2.5; // 100% за 4 секунды (100 / 40 = 2.5)
+                    return Math.min(newWidth, 100);
+                });
+            }, 100); // 4 секунды = 4000 мс / 40 итераций по 100 мс
+        } else if (bombData.state === "defusing" && defuseWidth < 100) {
+            const increment = bombData.player?.state.defusekit ? 2 : 1; // 100% за 5 секунд (100 / 50 = 2) или 10 секунд (100 / 100 = 1)
+            defuseInterval = setInterval(() => {
+                setDefuseWidth((prev) => {
+                    const newWidth = prev + increment;
+                    return Math.min(newWidth, 100);
+                });
+            }, 100); // 5-10 секунд = 5000-10000 мс / 100 итераций по 100 мс
+        }
 
         return () => {
             clearInterval(defuseInterval);
             clearInterval(plantInterval);
         };
-    }, [bombData.player?.state.defusekit, defuseWidth, plantWidth]);
+    }, [bombData.state, bombData.player?.state.defusekit, plantWidth, defuseWidth]);
 
-    useEffect(() => {
-        console.log(bombData.plantTime, bombData.defuseTime);
-    }, [bombData.defuseTime, bombData.plantTime]);
     return (
         <>
             <div
