@@ -89,7 +89,7 @@ const Layout = ({game, match}: Props) => {
                 mvpPlayer={mvpPlayer}
             />
             <PlayersList leftPlayers={leftPlayers} rightPlayers={rightPlayers} left={left} right={right}/>
-            <RoundsResult game={game} isShown={isFreezetime && !mvpPlayer && game.map.round !== 0}/>
+            <RoundsResult game={game} isShown={(isFreezetime && !mvpPlayer && game.map.round !== 0) || game.phase_countdowns.phase === "paused"}/>
             <Tournament/>
 
             <Observed player={game.player}/>
