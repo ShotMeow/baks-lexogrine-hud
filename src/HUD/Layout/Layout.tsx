@@ -89,7 +89,15 @@ const Layout = ({game, match}: Props) => {
                 mvpPlayer={mvpPlayer}
             />
             <PlayersList leftPlayers={leftPlayers} rightPlayers={rightPlayers} left={left} right={right}/>
-            <RoundsResult game={game} isShown={(isFreezetime && !mvpPlayer && game.map.round !== 0) || game.phase_countdowns.phase === "paused"}/>
+            <RoundsResult game={game} isShown={
+                (isFreezetime && !mvpPlayer && game.map.round !== 0)
+                ||
+                (game.phase_countdowns.phase === "paused" && game.map.round !== 0)
+                ||
+                (game.phase_countdowns.phase === "timeout_t" && game.map.round !== 0)
+                ||
+                (game.phase_countdowns.phase === "timeout_ct" && game.map.round !== 0)
+            }/>
             <Tournament/>
 
             <Observed player={game.player}/>
@@ -109,7 +117,7 @@ const Layout = ({game, match}: Props) => {
             <MvpPlayer mvpPlayer={mvpPlayer}
                        isShown={Boolean(isFreezetime && mvpPlayer && game.phase_countdowns.phase !== 'paused' && game.phase_countdowns.phase !== "timeout_ct" && game.phase_countdowns.phase !== "timeout_t")}
                        game={game}/>
-            <Pause phase={game.phase_countdowns}/>
+            <Pause game={game}/>
             <Timeout phase={game.phase_countdowns} map={game.map}/>
             <Trivia/>
             <Scout left={left.side} right={right.side}/>

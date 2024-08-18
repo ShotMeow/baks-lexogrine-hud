@@ -23,7 +23,6 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 200px;
   background-color: var(--sub-panel-color);
   width: 600px;
   display: flex;
@@ -33,9 +32,17 @@
   font-size: 35px;
   font-weight: bold;
   transition: opacity 1.5s;
-  opacity: 0;
+  opacity: 1;
   color: white;
   clip-path: polygon(2% 0%, 98% 0%, 100% 15%, 100% 85%, 98% 100%, 2% 100%, 0% 85%, 0% 15%);
+
+  &.adjacent {
+    top: 120px;
+  }
+
+  &.no-adjacent {
+    top: 200px;
+  }
 }
 
 .team {

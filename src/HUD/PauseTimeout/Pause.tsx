@@ -3,14 +3,14 @@ import {CSGO} from "csgogsi";
 import styles from './PauseTimeout.module.scss';
 
 interface IProps {
-    phase: CSGO["phase_countdowns"] | null;
+    game: CSGO;
 }
 
-const Pause = ({phase}: IProps) => {
+const Pause = ({game}: IProps) => {
     return (
         <div
 
-            className={`${styles['pause']} ${styles[phase && phase.phase === "paused" ? "show" : ""]}`}
+            className={`${styles['pause']} ${styles[game.phase_countdowns.phase === "paused" ? "show" : ""]} ${styles[game.map.round === 0 ? "adjacent" : "no-adjacent"]}`}
         >
             PAUSE
         </div>
