@@ -152,11 +152,11 @@
     }
 
     &.left > .logo {
-      border-right: 4px solid rgb(var(--color-new-ct));
+      border-left: 4px solid rgb(var(--color-new-ct));
     }
 
     &.right > .logo {
-      border-left: 4px solid rgb(var(--color-new-ct));
+      border-right: 4px solid rgb(var(--color-new-ct));
     }
   }
 
@@ -198,11 +198,11 @@
     }
 
     &.left > .logo {
-      border-right: 4px solid rgb(var(--color-new-t));
+      border-left: 4px solid rgb(var(--color-new-t));
     }
 
     &.right > .logo {
-      border-left: 4px solid rgb(var(--color-new-t));
+      border-right: 4px solid rgb(var(--color-new-t));
     }
 
     .defuse-bar {
@@ -366,7 +366,7 @@
     clip-path: polygon(0 0, 100% 0, 90% 55%, 76% 55%, 70% 100%, 30% 100%, 24% 55%, 10% 55%);
     padding: 10px 0 6px 0;
     width: 237px;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--sub-panel-color);
     text-transform: uppercase;
     align-items: center;
     justify-content: center;
@@ -422,6 +422,10 @@
       .logo {
         justify-content: center;
       }
+
+      .team-name {
+        justify-content: flex-end;
+      }
     }
   }
 
@@ -430,7 +434,6 @@
     width: 360px;
     height: 70px;
     align-items: center;
-    justify-content: center;
     font-weight: 900;
     font-size: 28px;
     background-color: var(--sub-panel-color);

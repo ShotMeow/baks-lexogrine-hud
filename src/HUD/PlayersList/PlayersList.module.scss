@@ -7,8 +7,7 @@
   transform: translateX(-50%);
   background-color: var(--sub-panel-color);
   color: white;
-  clip-path: polygon(1% 0%, 99% 0%, 100% 2%, 100% 98%, 99% 100%, 1% 100%, 0% 98%, 0% 2%);
-
+ 
   display: grid;
   grid-template-columns: 1fr 1fr;
 
