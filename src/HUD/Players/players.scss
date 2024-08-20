@@ -14,6 +14,18 @@
     bottom: 5px;
   }
 
+  .player.dead {
+    .round-kills {
+      color: #707070;
+    }
+  }
+
+  &.right {
+    .bottom-header-group, .round-kills {
+      flex-direction: row-reverse;
+    }
+  }
+
   &.left {
     .defuse_indicator, .armor_indicator {
       left: 190px;
@@ -290,6 +302,23 @@
         align-items: center;
         justify-content: space-between;
 
+        .bottom-header-group {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .round-kills {
+            display: flex;
+            font-weight: 900;
+            gap: 6px;
+
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+
         .money {
           color: #42cc5c;
           font-weight: 900;
@@ -328,11 +357,6 @@
             svg {
               width: 15px;
             }
-          }
-
-          .round-kills {
-            color: #6a6a6a;
-            padding-top: 2px;
           }
 
           .deaths {
