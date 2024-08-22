@@ -24,6 +24,14 @@
     .bottom-header-group, .round-kills {
       flex-direction: row-reverse;
     }
+
+    .kills {
+      flex-direction: row-reverse;
+    }
+
+    .deaths {
+      flex-direction: row-reverse;
+    }
   }
 
   &.left {

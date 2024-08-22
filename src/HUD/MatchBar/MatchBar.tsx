@@ -4,7 +4,6 @@ import "./matchbar.scss";
 import TeamScore from "./TeamScore";
 import {useBombTimer} from "./../Timers/Countdown";
 import {Match} from "./../../API/types";
-import matchbarBgSrc from "../../assets/bg/matchbar-bg.png";
 import baksLogoSrc from "../../assets/icons/baks_logo.png";
 import Bomb from "../Timers/BombTimer.tsx";
 
@@ -82,7 +81,6 @@ const Matchbar = (props: IProps) => {
                 </div>
                 <div id="timer">
                     <img className="baks-logo" src={baksLogoSrc} alt="Logo"/>
-                    <img className="matchbar-bg" src={matchbarBgSrc} alt="Фон"/>
                     <div className="cup-bg"/>
                     <div className={`round_timer_text ${isPlanted ? "planting" : ""}`}>
                         {isPlanted ? (
@@ -95,7 +93,7 @@ const Matchbar = (props: IProps) => {
                     </div>
                     <div
                         id="round_now"
-                        className={`${(phase.phase === "freezetime" && !props.mvpPlayer) || (phase.phase === "paused" && !props.mvpPlayer) || (phase.phase === "timeout_ct" && !props.mvpPlayer) || (phase.phase === "timeout_t" && !props.mvpPlayer)? "hide" : ""}`}
+                        className={`${(phase.phase === "freezetime" && !props.mvpPlayer) || (phase.phase === "paused" && !props.mvpPlayer) || (phase.phase === "timeout_ct" && !props.mvpPlayer) || (phase.phase === "timeout_t" && !props.mvpPlayer) ? "hide" : ""}`}
                     >
                         {getRoundLabel(map.round)}
                     </div>

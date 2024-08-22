@@ -152,9 +152,6 @@
   }
 
   &.CT {
-    .gradient {
-      background: linear-gradient(360deg, rgba(var(--color-new-ct), 0.5) 0%, rgba(217, 217, 217, 0) 100%);
-    }
 
     .bottom svg {
       fill: rgb(var(--color-new-ct));
@@ -166,9 +163,6 @@
   }
 
   &.T {
-    .gradient {
-      background: linear-gradient(360deg, rgba(var(--color-new-t), 0.5) 0%, rgba(217, 217, 217, 0) 100%);
-    }
 
     .bottom svg {
       fill: rgb(var(--color-new-t));

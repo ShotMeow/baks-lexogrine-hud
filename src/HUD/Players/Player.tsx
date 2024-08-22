@@ -120,10 +120,10 @@ const Player = ({player, isObserved}: IProps) => {
                     <div>{player.observer_slot}</div>
                     <div>{player.name}</div>
                 </div>
-                {player.state.armor && <div className="armor">
-                    {player?.state.helmet ? <ArmorHelmet/> : <ArmorHalf/>}
-                    <span>{player?.state.health}</span>
-                </div>}
+                {player.state.armor ? <div className="armor">
+                    {player.state.helmet ? <ArmorHelmet/> : <ArmorHalf/>}
+                    <span>{player.state.health}</span>
+                </div> : <></>}
                 <div
                     className="background-red"
                     style={{width: `${player?.state.health}%`}}
